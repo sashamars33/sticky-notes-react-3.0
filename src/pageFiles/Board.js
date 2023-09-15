@@ -11,9 +11,10 @@ const Board = () => {
     const dispatch = useDispatch()
 
     const {user} = useSelector((state) => state.auth)
-    const { notes, isLoading, isError, isSuccess, message } = useSelector(state => state.notes)
+    const {notes, isLoading, isError, isSuccess, message } = useSelector(state => state.notes)
     const {page} = useSelector((state) => state.pages)
     const [note, setNote] = useState({})
+    const [notesArr , setNotesArr] = useState(notes)
 
 
     const backToBoards = () => {
@@ -57,31 +58,21 @@ const Board = () => {
     }, [dispatch, page])
 
 
-    if(isLoading || !page){
-        return(
-        //   <Paper sx={{bgcolor: 'background.default'}} style={{padding: '2% 5%', height: '100vh'}} elevation={0} square>
-        //     <Card style={{display: 'flex', padding: '10%', background: '#00000000'}}>
-        //       <CircularProgress style={{margin: 'auto'}}/>
-        //     </Card>
-        //   </Paper>
-        <p>chill it's loading</p>
-        )
-      }
+
 
   return (
-    <section className='mx-12 md:mx-24 lg:mx-48 xl:mx-48 flex justify-between items-start pt-12 pb-64'>
-          <div className="w-1/4 flex flex-col gap-3">
-            <button className="btn btn-accent" onClick={backToBoards}>Back to Boards</button>
+    <section className='mx-12 md:mx-24 lg:mx-48 xl:mx-48 flex justify-between items-start pt-12 pb-64 '>
+          <div className="w-1/4 flex flex-col gap-3 bg-secondary p-4 rounded-xl text-white">
+            <button className="btn btn-accent w-2/3" onClick={backToBoards}>Back to Boards</button>
             <h2 className="heading-font text-3xl">{page.topic}</h2>
-            <p className="accent-font">Search Notes</p>
             <p className="accent-font">Create a new note below!</p>
             <form className="form-control">
-              <textarea className="input bg-white my-3" label="Add a new note." id="note" name="note" onChange={(e) => setNote(e.target.value)}></textarea>
+              <textarea className="input bg-white my-3 h-36" placeholder="Add a new note." id="note" name="note" onChange={(e) => setNote(e.target.value)}></textarea>
               <button onClick={onSubmit} className="btn btn-info">Add</button>
             </form>
           </div>
           <div className="w-3/4 flex gap-3 flex-wrap justify-center">
-          <Notes notes = {notes}/>
+          {isLoading ? <p>loading...</p> : <Notes notes = {notes}/>}
           </div>
         </section>
     // <>

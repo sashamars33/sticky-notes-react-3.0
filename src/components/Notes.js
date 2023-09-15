@@ -9,43 +9,50 @@ import {TiDelete} from 'react-icons/ti'
 const Notes = ({notes}) => {
 
     const dispatch = useDispatch()
-    const [hidden, setHidden] = useState('')
-    const [checked, setCheck] = useState(false)
+    const [notesArr, setNotesArr] = useState(notes)
     const [note, setNote] = useState('')
     const [deleteNote, setDeleteNote] = useState('')
 
     useEffect(() => {
+        
         if(note.length > 0){
-            dispatch(checkNote(note))
+            dispatch(checkNote(note[0]))
+            const updatedNotesArr = notesArr.map((n) =>
+            n._id === note[0] ? { ...n, checked: !n.checked } : n
+          )
+            setNotesArr(updatedNotesArr)
             setNote('')
         }
         if(deleteNote.length > 0){
-            console.log(deleteNote)
             dispatch(deleteNotes(deleteNote))
+            const updatedNotesArr = notesArr.filter((n) => n._id !== deleteNote);
+            setNotesArr(updatedNotesArr);
+
             setDeleteNote('')
         }
-    }, [dispatch, note, setNote, setDeleteNote, deleteNote])
+    }, [dispatch, note, setNote, setDeleteNote, deleteNote, notesArr])
 
 
 
-    if(!notes || notes.message){
+    if(notesArr.length == 0 || notes.message){
         return (
             <h3 style={{width: '100%', textAlign: 'center'}}>No Notes Yet!</h3>
         )
     };
 
 
+
   return (
     <>
-    {notes.map(note => (
+    {notesArr.map((note, ix) => (
                 <section key={note._id} className="w-1/4">
                   <div>
-                    <div className={`flex flex-wrap bg-primary rounded p-2 ${hidden}`}>
-                      <div className="flex w-full justify-between">
-                        {checked ? <MdOutlineCheckBox onClick={() => {setNote(note._id); setCheck(!checked)}}/> : <MdOutlineCheckBoxOutlineBlank onClick={() => {setNote(note._id); setCheck(!checked)}} />}
-                        <TiDelete onClick={() => {setDeleteNote(note._id); setHidden('hidden')}}/>
+                    <div className={`flex flex-wrap bg-primary rounded p-2`}>
+                      <div className="flex w-full justify-between text-base-100">
+                        {note.checked ? <MdOutlineCheckBox onClick={() => {setNote([note._id, note.checked]);}}/> : <MdOutlineCheckBoxOutlineBlank onClick={() => {setNote([note._id, note.checked]);}} />}
+                        <TiDelete onClick={() => {setDeleteNote(note._id); }}/>
                       </div>
-                      <p >{note.note}</p>
+                      <p className="text-base-100">{note.note || note}</p>
                       </div>
                   </div>
                 </section>

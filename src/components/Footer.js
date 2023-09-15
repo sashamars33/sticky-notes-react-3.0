@@ -7,7 +7,7 @@ const Footer = () => {
     const {user} = useSelector((state) => state.auth)
 
   return (
-    <section className="w-full bg-secondary py-12">
+    <section className="w-full bg-secondary py-12 text-white">
         <section className="mx-12 md:mx-24 lg:mx-48 xl:mx-48 flex flex-row-reverse justify-between ">
         <div>
             <h4 className="py-3 text-center">Have a question?</h4>
