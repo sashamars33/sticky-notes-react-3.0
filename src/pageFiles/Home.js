@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import heroImg from '../assets/note-hero-graphic.svg';
+import heroImg from '../assets/note-hero-graphic-new.svg';
 
 
 const Home = () => {
@@ -10,7 +10,7 @@ const Home = () => {
   
     return (
   <>
-      <section className="mx-12 md:mx-24 lg:mx-48 xl:mx-48">
+      <section className="mx-12 md:mx-24 lg:mx-48 xl:mx-48 text-white">
               <section className="flex items-center gap-6 justify-between ">
                 <div className="w-1/2">
                   <h1 className="heading-font text-5xl ">A Wonderful World of Notes!</h1>

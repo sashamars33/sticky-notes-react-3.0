@@ -79,20 +79,20 @@ const Profile = () => {
   
     return (
         <section className='mx-12 md:mx-24 lg:mx-48 xl:mx-48 flex justify-between items-start pt-12 pb-64'>
-          <div className="w-1/4">
-            <h1 className="heading-font text-3xl">Welcome {name}!</h1>
-            <p className="accent-font">Search</p>
+          <div className="w-1/4 bg-secondary text-white p-4 rounded-xl">
+            <h1 className="heading-font text-2xl">{user.name}'s Boards</h1>
             <p className="accent-font">Create a new board below!</p>
             <form className="form-control">
-              <input className="input bg-white my-3" label="Add a new board." id="page" name="page" onChange={(e) => setPage(e.target.value)}></input>
+              <input className="input bg-white my-3" placeholder="Add a new board." id="page" name="page" onChange={(e) => setPage(e.target.value)}></input>
               <button onClick={onSubmit} className="btn btn-info">Add</button>
+
             </form>
           </div>
           <div className="w-3/4 flex gap-3 flex-wrap justify-center">
           {isLoading ? <p>loading...</p> : pages || pages.length === 0 || pages.message ? pageArr.map(page => (
               <section key={page.id} className="flex bg-primary p-2 pb-12 heading-font rounded-lg w-3/12 flex justify-between cursor-pointer">
-                      <h3  onClick={() => {setPageClick([true, page._id]);} } className="heading-font text-xl">{page.topic ? page.topic : page}</h3>
-                     <TiDelete onClick={() => setDeletePage(page._id)}/>
+                      <h3  onClick={() => {setPageClick([true, page._id]);} } className="heading-font text-xl text-base-100">{page.topic ? page.topic : page}</h3>
+                     <TiDelete className="text-base-100 w-1/12" onClick={() => setDeletePage(page._id)}/>
                 </section>
           )): <h3>No Boards Yet</h3>}
           </div>

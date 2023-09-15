@@ -39,7 +39,7 @@ const Notes = ({notes}) => {
             <h3 style={{width: '100%', textAlign: 'center'}}>No Notes Yet!</h3>
         )
     };
-console.log(notes)
+
 
 
   return (
@@ -48,11 +48,11 @@ console.log(notes)
                 <section key={note._id} className="w-1/4">
                   <div>
                     <div className={`flex flex-wrap bg-primary rounded p-2`}>
-                      <div className="flex w-full justify-between">
+                      <div className="flex w-full justify-between text-base-100">
                         {note.checked ? <MdOutlineCheckBox onClick={() => {setNote([note._id, note.checked]);}}/> : <MdOutlineCheckBoxOutlineBlank onClick={() => {setNote([note._id, note.checked]);}} />}
                         <TiDelete onClick={() => {setDeleteNote(note._id); }}/>
                       </div>
-                      <p >{note.note}</p>
+                      <p className="text-base-100">{note.note || note}</p>
                       </div>
                   </div>
                 </section>
