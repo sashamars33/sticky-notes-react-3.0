@@ -11,9 +11,10 @@ const Board = () => {
     const dispatch = useDispatch()
 
     const {user} = useSelector((state) => state.auth)
-    const { notes, isLoading, isError, isSuccess, message } = useSelector(state => state.notes)
+    const {notes, isLoading, isError, isSuccess, message } = useSelector(state => state.notes)
     const {page} = useSelector((state) => state.pages)
     const [note, setNote] = useState({})
+    const [notesArr , setNotesArr] = useState(notes)
 
 
     const backToBoards = () => {
@@ -46,7 +47,9 @@ const Board = () => {
                 user: user._id
             }
             dispatch(createNote(noteData))
-            window.location.reload(false);
+            const newNotesArr = [...notesArr, noteData]
+            setNotesArr(newNotesArr)
+            // window.location.reload(false);
         }
     }
 
@@ -57,16 +60,7 @@ const Board = () => {
     }, [dispatch, page])
 
 
-    if(isLoading || !page){
-        return(
-        //   <Paper sx={{bgcolor: 'background.default'}} style={{padding: '2% 5%', height: '100vh'}} elevation={0} square>
-        //     <Card style={{display: 'flex', padding: '10%', background: '#00000000'}}>
-        //       <CircularProgress style={{margin: 'auto'}}/>
-        //     </Card>
-        //   </Paper>
-        <p>chill it's loading</p>
-        )
-      }
+
 
   return (
     <section className='mx-12 md:mx-24 lg:mx-48 xl:mx-48 flex justify-between items-start pt-12 pb-64'>
@@ -81,7 +75,7 @@ const Board = () => {
             </form>
           </div>
           <div className="w-3/4 flex gap-3 flex-wrap justify-center">
-          <Notes notes = {notes}/>
+          {isLoading ? <p>loading...</p> : <Notes notes = {notes}/>}
           </div>
         </section>
     // <>
