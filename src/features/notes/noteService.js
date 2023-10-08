@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = 'http://localhost:3333/api/pages'
+const API_URL = 'https://shy-red-perch-veil.cyclic.app/api/pages'
 
 const createNote = async(noteData, token) => {
     const config = {
@@ -8,8 +8,11 @@ const createNote = async(noteData, token) => {
             Authorization: `Bearer ${token}`
         }
     }
+    console.log(noteData)
     const res = await axios.post(`${API_URL}/create-note`, noteData, config)
+    console.log(res.data)
     return res.data
+
 }
 
 const getNotes = async(token, page) => {

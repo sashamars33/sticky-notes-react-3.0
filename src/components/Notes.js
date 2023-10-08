@@ -40,11 +40,11 @@ const Notes = ({notes}) => {
         )
     };
 
-
+const parser = new DOMParser();
 
   return (
     <>
-    {notesArr.map((note, ix) => (
+    {notes && !notes.message ? notesArr.map((note, ix) => (
                 <section key={note._id} className="w-1/4">
                   <div>
                     <div className={`flex flex-wrap bg-primary rounded p-2`}>
@@ -52,11 +52,14 @@ const Notes = ({notes}) => {
                         {note.checked ? <MdOutlineCheckBox onClick={() => {setNote([note._id, note.checked]);}}/> : <MdOutlineCheckBoxOutlineBlank onClick={() => {setNote([note._id, note.checked]);}} />}
                         <TiDelete onClick={() => {setDeleteNote(note._id); }}/>
                       </div>
-                      <p className="text-base-100">{note.note || note}</p>
+                      <div className="w-full text-base-100">
+                      <div dangerouslySetInnerHTML={{ __html: note.note }} />
+                        {/* {parser.parseFromString(note.note, 'text/html').body.innerHTML && parser.parseFromString(note.note, 'text/html').body.innerHTML} */}
+                      </div>
                       </div>
                   </div>
                 </section>
-              ))}
+              )) : <p>No Notes Yet!</p>}
               </>
   )
 }

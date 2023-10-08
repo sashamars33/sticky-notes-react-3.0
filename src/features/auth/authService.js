@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = 'http://localhost:3333/api/users'
+const API_URL = 'https://shy-red-perch-veil.cyclic.app/api/users'
 
 const register = async (userData) => {
     const res = await axios.post(API_URL, userData)
