@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_URL = 'http://localhost:3333/api/pages'
+const API_URL = 'https://shy-red-perch-veil.cyclic.app/api/pages'
 
 const createPage = async(pageData, token) => {
     const config = {
@@ -9,6 +9,7 @@ const createPage = async(pageData, token) => {
         }
     }
     const res = await axios.post(`${API_URL}/create-page`, pageData, config)
+    console.log(res.data)
     return res.data
 }
 

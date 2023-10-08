@@ -16,17 +16,17 @@ const Navigation = () => {
     }
   
     return (
-      <section className=" py-12 bg-secondary text-white">
+      <section className=" py-8 text-white">
         <section className="mx-12 md:mx-24 lg:mx-48 xl:mx-48">
           <div className="flex justify-between">
             <Link to='/' className="heading-font text-3xl">Stickys</Link>
   
             {user ? (
-            <button className="btn btn-info" onClick={onLogout}>Logout</button>
+            <button className="btn btn-ghost" onClick={onLogout}>Logout</button>
             ) : (
               <div className="flex gap-6">
-                <Link to='/login' className="btn btn-primary">Login</Link>
-                <Link to='/register' className="btn btn-primary">Register</Link>
+                <Link to='/login' className="btn btn-ghost">Login</Link>
+                <Link to='/register' className="btn btn-ghost">Register</Link>
               </div>
               ) } 
           </div>
