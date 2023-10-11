@@ -61,11 +61,9 @@ const Profile = () => {
                 page,
                 user: user._id
             }
-            console.log(pageData)
             dispatch(createPage(pageData))
         }
     }
-  console.log(pages)
   
     return (
         <section className='mx-12 md:mx-24 lg:mx-48 xl:mx-48 flex justify-between items-start pt-12 pb-64'>
