@@ -9,7 +9,6 @@ const createPage = async(pageData, token) => {
         }
     }
     const res = await axios.post(`${API_URL}/create-page`, pageData, config)
-    console.log(res.data)
     return res.data
 }
 
@@ -50,6 +49,7 @@ const deletePage = async(token, page) => {
         }
     }
     const res = await axios.delete(`${API_URL}/${page}/delete-page`, config)
+    console.log(res.data)
     return res.data
 }
 

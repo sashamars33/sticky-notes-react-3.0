@@ -96,9 +96,10 @@ export const pageSlice = createSlice({
             .addCase(createPage.pending, (state) => {
                 state.isLoading = true
             })
-            .addCase(createPage.fulfilled, (state) => {
+            .addCase(createPage.fulfilled, (state, action) => {
                 state.isLoading = false
                 state.isSuccess = true
+                state.pages = [...state.pages, action.payload]
             })
             .addCase(createPage.rejected, (state, action) => {
                 state.isLoading = false
@@ -130,6 +131,11 @@ export const pageSlice = createSlice({
                 state.isLoading = false
                 state.isError = true
                 state.message = action.payload
+            })
+            .addCase(deletePages.fulfilled , (state, action) => {
+                state.isLoading = false
+                state.isError = false
+                state.pages = state.pages.filter(it => it._id !== action.payload)
             })
     }
 })

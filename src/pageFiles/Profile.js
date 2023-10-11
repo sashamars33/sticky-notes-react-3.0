@@ -42,13 +42,10 @@ const Profile = () => {
       navigate('/board')
       dispatch(setCurrentPage(pageClick[1]))
       setPageClick([false, ''])
-      window.location.reload(false)
     }
     if(deletePage.length > 0){
       dispatch(deletePages(deletePage))
       setDeletePage('')
-      window.location.reload(false)
-
     }
     
   }, [dispatch, navigate, setPageClick, pageClick, setDeletePage, deletePage])
@@ -66,12 +63,9 @@ const Profile = () => {
             }
             console.log(pageData)
             dispatch(createPage(pageData))
-
         }
     }
-  
   console.log(pages)
-  
   
     return (
         <section className='mx-12 md:mx-24 lg:mx-48 xl:mx-48 flex justify-between items-start pt-12 pb-64'>
@@ -84,16 +78,16 @@ const Profile = () => {
 
             </form>
           </div>
-          <div className="w-3/4 flex gap-3 flex-wrap justify-center">
-          {isLoading ? <p>loading...</p> : pages && !pages.message ? pages.map(it => (
-              <section key={it.reactID} className="flex bg-primary p-2 pb-12 heading-font rounded-lg w-3/12 justify-between flex-wrap  cursor-pointer">
+          <div className="w-3/4 flex flex-col gap-3 flex-wrap justify-center">
+          {isLoading ? <p className="w-full text-center">loading...</p> : pages && !pages.message ? pages.map(it => (
+              <section key={it._id} className="flex flex-col bg-primary p-4 heading-font rounded-lg w-3/12 justify-between  w-full ml-9 cursor-pointer">
+                <div className="flex justify-between items-center">
                       <h3  onClick={() => {setPageClick([true, it._id]);} } className="heading-font text-xl text-base-100">{it.topic ? it.topic : it.page}</h3>
                      <TiDelete className="text-base-100 w-1/12" onClick={() => setDeletePage(it._id)}/>
-                     <p className="w-full text-base-100">notes: {notes && !notes.message ? notes.filter( item => item.reactPageID === it.reactID).length : 0}</p>
-                     <p className="w-full text-base-100">completed: {notes && !notes.message ? notes.filter( item => item.reactPageID === it.reactID && it.checked === true).length : 0}</p>
+                </div>
 
                 </section>
-          )): <h3 className="text-white">No Boards Yet</h3>}
+          )): <h3 className="text-white w-full text-center">No Boards Yet</h3>}
           </div>
         </section>
     )
