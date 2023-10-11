@@ -26,25 +26,24 @@ const Notes = ({notes}) => {
 
 
 
-    if(notes.length == 0 || notes.message){
+    if(notes.length === 0 || notes.message){
         return (
             <h3 style={{width: '100%', textAlign: 'center'}}>No Notes Yet!</h3>
         )
     };
 
-const parser = new DOMParser();
 
   return (
     <>
     {notes && !notes.message ? notes.map((note, ix) => (
-                <section key={note._id} className="w-1/4">
+                <section key={note._id} className="w-full md:w-1/2 lg:w-1/4 xl:w-1/4">
                   <div>
                     <div className={`flex flex-wrap bg-primary rounded p-2`}>
-                      <div className="flex w-full justify-between text-base-100">
+                      <div className="flex w-full justify-between">
                         {note.checked ? <MdOutlineCheckBox onClick={() => {setNote([note._id, note.checked]);}}/> : <MdOutlineCheckBoxOutlineBlank onClick={() => {setNote([note._id, note.checked]);}} />}
                         <TiDelete onClick={() => {setDeleteNote(note._id); }} className="cursor-pointer"/>
                       </div>
-                      <div className="w-full text-base-100">
+                      <div className="w-full">
                       <div dangerouslySetInnerHTML={{ __html: note.note }} />
                         {/* {parser.parseFromString(note.note, 'text/html').body.innerHTML && parser.parseFromString(note.note, 'text/html').body.innerHTML} */}
                       </div>

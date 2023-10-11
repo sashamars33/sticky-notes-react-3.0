@@ -8,11 +8,8 @@ const createNote = async(noteData, token) => {
             Authorization: `Bearer ${token}`
         }
     }
-    console.log(noteData)
     
     const res = await axios.post(`${API_URL}/create-note`, noteData, config)
-
-    console.log(res.data)
     return res.data
 
 }

@@ -16,7 +16,6 @@ const Board = () => {
     const {notes, isLoading, isError, isSuccess, message } = useSelector(state => state.notes)
     const {page} = useSelector((state) => state.pages)
     const [note, setNote] = useState({})
-    const [noteArr , setNoteArr] = useState(notes)
 
 
     const backToBoards = () => {
@@ -64,19 +63,19 @@ const Board = () => {
 
 
   return (
-    <section className='mx-12 md:mx-24 lg:mx-48 xl:mx-48 flex justify-between items-start pt-12 pb-64 '>
-          <div className="w-1/4 flex flex-col gap-3 bg-secondary p-4 rounded-xl text-white">
-            <button className="btn btn-accent w-2/3" onClick={backToBoards}>Back to Boards</button>
+    <section className='mx-12 md:mx-24 lg:mx-24 xl:mx-24 flex flex-col lg:flex-row xl:flex-row lg:justify-between xl:justify-between items-start pt-12 pb-64 '>
+          <div className="w-full lg:w-1/4 xl:1/4 flex flex-col gap-3 bg-secondary p-4 rounded-xl">
+            <button className="btn btn-primary w-2/3" onClick={backToBoards}>Back to Boards</button>
             <h2 className="heading-font text-3xl">{page.topic}</h2>
-            <p className="accent-font text-white">Create a new note below!</p>
+            <p className="accent-font">Create a new note below!</p>
             <form className="form-control">
             <ReactQuill className= "bg-white text-base-100 rounded-xl border-none mb-4 rich-text-form" theme="snow" placeholder="Add a new note." id="note" name="note" value={note} onChange={setNote} style={{border: 'none'}} />
               {/* <textarea className="input bg-white my-3 h-36 text-base-100" placeholder="Add a new note." id="note" name="note" onChange={(e) => setNote(e.target.value)}></textarea> */}
-              <button onClick={onSubmit} className="btn btn-info">Add</button>
+              <button onClick={onSubmit} className="btn btn-accent">Add</button>
             </form>
           </div>
-          <div className="w-3/4 flex gap-3 flex-wrap justify-center w-full">
-          {isLoading ? <p>loading...</p> : <Notes notes = {notes}/>}
+          <div className="w-full flex gap-3 flex-wrap justify-center mx-auto p-4 ">
+          {isLoading ? <p>No Notes Yet!</p> : <Notes notes = {notes}/>}
           </div>
         </section>
 

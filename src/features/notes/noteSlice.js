@@ -100,6 +100,16 @@ export const noteSlice = createSlice({
                 state.isError = true
                 state.message = action.payload
             })
+            .addCase(deleteNotes.fulfilled , (state, action) => {
+                state.isLoading = false
+                state.isError = false
+                state.notes = state.notes.filter(it => it._id !== action.payload)
+            })
+            .addCase(checkNote.fulfilled , (state, action) => {
+                state.isLoading = false
+                state.isError = false
+                state.notes = state.notes.map(it => it._id === action.payload._id ? {...it, checked: action.payload.checked} : it)
+            })
     }
 })
 

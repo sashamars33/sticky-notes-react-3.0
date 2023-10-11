@@ -9,8 +9,6 @@ const Profile = () => {
 
     const {user} = useSelector((state) => state.auth)
     const {pages, isLoading, isError, isSuccess, message} = useSelector(state => state.pages)
-    const {notes} = useSelector(state => state.notes)
-    const [name, setName] = useState(user.name)
     const [page, setPage] = useState('')
     const [pageClick, setPageClick] = useState([false, '']);
     const [deletePage, setDeletePage] = useState('')
@@ -66,19 +64,19 @@ const Profile = () => {
     }
   
     return (
-        <section className='mx-12 md:mx-24 lg:mx-48 xl:mx-48 flex justify-between items-start pt-12 pb-64'>
-          <div className="w-1/4 bg-secondary text-white p-4 rounded-xl">
+        <section className='mx-12 md:mx-24 lg:mx-24 xl:mx-24 flex flex-col lg:flex-row xl:flex-rowjustify-between items-start pt-12 pb-64'>
+          <div className="w-full lg:w-1/4 xl:w-1/4 bg-secondary p-4 rounded-xl">
             <h1 className="heading-font text-2xl">{user.name}'s Boards</h1>
             <p className="accent-font">Create a new board below!</p>
             <form className="form-control">
               <input className="input bg-white my-3 text-base-100" placeholder="Add a new board." id="page" name="page" onChange={(e) => setPage(e.target.value)}></input>
-              <button onClick={onSubmit} className="btn btn-info">Add</button>
+              <button onClick={onSubmit} className="btn btn-accent">Add</button>
 
             </form>
           </div>
-          <div className="w-3/4 flex flex-col gap-3 flex-wrap justify-center">
-          {isLoading ? <p className="w-full text-center">loading...</p> : pages && !pages.message ? pages.map(it => (
-              <section key={it._id} className="flex flex-col bg-primary p-4 heading-font rounded-lg w-3/12 justify-between  w-full ml-9 cursor-pointer">
+          <div className="w-full flex flex-col gap-3 flex-wrap justify-center pt-4 lg:pt-0 xl:pt-0 lg:pl-8 xl:pl-8">
+          {isLoading ? <p className="w-full text-center">No Boards Yet</p> : pages && !pages.message ? pages.map(it => (
+              <section key={it._id} className="flex flex-col bg-primary p-4 heading-font rounded-lg w-3/12 justify-between  w-full cursor-pointer">
                 <div className="flex justify-between items-center">
                       <h3  onClick={() => {setPageClick([true, it._id]);} } className="heading-font text-xl text-base-100">{it.topic ? it.topic : it.page}</h3>
                      <TiDelete className="text-base-100 w-1/12" onClick={() => setDeletePage(it._id)}/>
