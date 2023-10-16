@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import heroImg from '../assets/note-hero-graphic-new.svg';
+import heroImg from '../assets/sticky-hero.svg';
 
 
 const Home = () => {

@@ -69,7 +69,7 @@ const Profile = () => {
             <h1 className="heading-font text-2xl">{user.name}'s Boards</h1>
             <p className="accent-font">Create a new board below!</p>
             <form className="form-control">
-              <input className="input bg-white my-3 text-base-100" placeholder="Add a new board." id="page" name="page" onChange={(e) => setPage(e.target.value)}></input>
+              <input className="input bg-white my-3" placeholder="Add a new board." id="page" name="page" onChange={(e) => setPage(e.target.value)}></input>
               <button onClick={onSubmit} className="btn btn-accent">Add</button>
 
             </form>

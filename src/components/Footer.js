@@ -11,7 +11,7 @@ const Footer = () => {
         <section className="mx-12 md:mx-24 lg:mx-24 xl:mx-24 flex flex-row-reverse justify-between items-center">
         <div>
             <h4 className="py-3 text-center">Have a question?</h4>
-            <a href="https://sashamarshall.dev/" className="btn btn-accent">Send us a Message</a>
+            <a href="https://sashamarshall.dev/" target="_blank" rel="noopener noreferrer" className="btn btn-accent">Send us a Message</a>
         </div>
         <div>
             <h5 style={{fontSize: '1.2rem'}}>Site Map</h5>

@@ -6,6 +6,7 @@ import {MdOutlineCheckBox} from 'react-icons/md'
 import {TiDelete} from 'react-icons/ti'
 
 
+
 const Notes = ({notes}) => {
 
     const dispatch = useDispatch()

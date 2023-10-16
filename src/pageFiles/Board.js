@@ -4,9 +4,6 @@ import {useSelector, useDispatch} from 'react-redux'
 import {createNote, getNotes, reset} from '../features/notes/noteSlice'
 import Notes from '../components/Notes'
 
-import ReactQuill from 'react-quill';
-import 'react-quill/dist/quill.snow.css'
-
 const Board = () => {
 
     const navigate = useNavigate()
@@ -69,8 +66,7 @@ const Board = () => {
             <h2 className="heading-font text-3xl">{page.topic}</h2>
             <p className="accent-font">Create a new note below!</p>
             <form className="form-control">
-            <ReactQuill className= "bg-white text-base-100 rounded-xl border-none mb-4 rich-text-form" theme="snow" placeholder="Add a new note." id="note" name="note" value={note} onChange={setNote} style={{border: 'none'}} />
-              {/* <textarea className="input bg-white my-3 h-36 text-base-100" placeholder="Add a new note." id="note" name="note" onChange={(e) => setNote(e.target.value)}></textarea> */}
+              <textarea className="input bg-white my-3 h-36 rounded-md" placeholder="Add a new note." id="note" name="note" onChange={(e) => setNote(e.target.value)}></textarea>
               <button onClick={onSubmit} className="btn btn-accent">Add</button>
             </form>
           </div>
