@@ -19,7 +19,7 @@ const Navigation = () => {
       <section className=" py-8">
         <section className="mx-12 md:mx-24 lg:mx-24 xl:mx-24">
           <div className="flex justify-between items-center">
-            <Link to='/' className="heading-font text-3xl">Stickys</Link>
+            <Link to='/' className="heading-font text-3xl">Sticky Notes</Link>
   
             {user ? (
             <div className="flex gap-6">

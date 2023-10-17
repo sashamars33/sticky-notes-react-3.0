@@ -31,7 +31,7 @@ const Home = () => {
               </section>
 
             <section className="flex flex-col justify-center items-center pb-12">
-                <h2 className="heading-font text-5xl text-center py-6">About Stickys</h2>
+                <h2 className="heading-font text-5xl text-center py-6">About Sticky Notes</h2>
                 <p className="accent-font text-2xl pt-6 text-left">Stickys' is designed with simplicity and versatility in mind. Whether you're jotting down quick reminders, brainstorming ideas, managing tasks, or collaborating with others, Sticky's offers the flexibility and convenience of digital sticky notes.
 </p><p className="accent-font text-2xl py-8 text-left">Capture your thoughts, ideas, and to-do lists in a digital format that retains the essence of traditional sticky notes while adding the benefits of digital organization and accessibility.
 Join Sticky's today and experience the joy of digital sticky notes, always there when you need them, wherever you are. Say goodbye to scattered paper notes and hello to the convenience of Stickys.</p>
